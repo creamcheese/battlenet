@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Battlenet::Modules::Item do
-  let(:api) { Battlenet.new }
+  let(:api) { Battlenet.new(:eu, ENV['API_KEY']) }
 
   it "fetches item data" do
     VCR.use_cassette('item_hooooooooooo') do

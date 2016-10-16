@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Battlenet do
-  let(:api) { Battlenet.new }
+  let(:api) { Battlenet.new(:eu, ENV['API_KEY']) }
 
   before(:each) do
     Battlenet.locale = "es_ES"
@@ -15,8 +15,8 @@ describe Battlenet do
 
   it "localizes data" do
     VCR.use_cassette('character_mortawa_es') do
-      character = api.character 'nazjatar', 'mortawa', :fields => 'talents'
-      character["talents"].first["glyphs"]["prime"].first["name"].should == "Glifo de Golpe con runa"
+      character = api.character 'archimonde', 'sweetlie', :fields => 'talents'
+      expect(character['talents'].first['talents'].first['spell']['name']).to eq("Cultivo")
     end
   end
 end

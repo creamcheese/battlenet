@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Battlenet::Modules::Arena do
-  let(:api) { Battlenet.new }
+  let(:api) { Battlenet.new(:us, ENV['API_KEY']) }
 
   it "fetches arena data" do
     VCR.use_cassette('arena_fun_and_profit') do

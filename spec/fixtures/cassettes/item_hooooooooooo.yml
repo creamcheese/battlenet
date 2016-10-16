@@ -1,29 +1,57 @@
 ---
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: http://us.battle.net:80/api/wow/item/12784
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+http_interactions:
+- request:
+    method: get
+    uri: https://eu.api.battle.net/wow/item/12784?apikey=<API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
       code: 200
       message: OK
     headers:
-      date:
-      - Sun, 06 Nov 2011 01:06:08 GMT
-      server:
+      Content-Language:
+      - en-GB
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Sun, 18 Sep 2016 16:30:12 GMT
+      Retry-After:
+      - '600'
+      Server:
       - Apache
-      x-frame-options:
-      - SAMEORIGIN
-      content-language:
-      - en-US
-      content-length:
-      - '726'
-      vary:
+      Vary:
       - Accept-Encoding
-      content-type:
-      - application/json;charset=utf-8
-    body: ! '{"id":12784,"disenchantingSkillRank":225,"description":"","name":"Arcanite
-      Reaper","icon":"inv_axe_09","stackable":1,"itemBind":2,"bonusStats":[{"stat":38,"amount":62,"reforged":false},{"stat":7,"amount":13,"reforged":false}],"itemSpells":[],"buyPrice":328683,"itemClass":2,"itemSubClass":1,"containerSlots":0,"weaponInfo":{"damage":{"min":153,"max":256},"weaponSpeed":3.8,"dps":53.81579},"inventoryType":17,"equippable":true,"itemLevel":63,"maxCount":0,"maxDurability":100,"minFactionId":0,"minReputation":0,"quality":3,"sellPrice":65736,"requiredSkill":0,"requiredLevel":58,"requiredSkillRank":0,"itemSource":{"sourceId":16994,"sourceType":"CREATED_BY_SPELL"},"baseArmor":0,"hasSockets":false,"isAuctionable":true,"armor":0}'
-    http_version: '1.1'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1e-123.mashery.com
+      X-Plan-Qps-Allotted:
+      - '100'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '36000'
+      X-Plan-Quota-Current:
+      - '16'
+      X-Plan-Quota-Reset:
+      - Sunday, September 18, 2016 5:00:00 PM GMT
+      Content-Length:
+      - '560'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":12784,"disenchantingSkillRank":225,"description":"","name":"Arcanite
+        Reaper","icon":"inv_axe_09","stackable":1,"itemBind":2,"bonusStats":[{"stat":38,"amount":28},{"stat":7,"amount":12}],"itemSpells":[],"buyPrice":328682,"itemClass":2,"itemSubClass":1,"containerSlots":0,"weaponInfo":{"damage":{"min":86,"max":144,"exactMin":86.0,"exactMax":144.0},"weaponSpeed":3.8,"dps":30.263159},"inventoryType":17,"equippable":true,"itemLevel":63,"maxCount":0,"maxDurability":100,"minFactionId":0,"minReputation":0,"quality":3,"sellPrice":65736,"requiredSkill":0,"requiredLevel":58,"requiredSkillRank":0,"itemSource":{"sourceId":16994,"sourceType":"CREATED_BY_SPELL"},"baseArmor":0,"hasSockets":false,"isAuctionable":true,"armor":0,"displayInfoId":23904,"nameDescription":"","nameDescriptionColor":"000000","upgradable":true,"heroicTooltip":false,"context":"","bonusLists":[],"availableContexts":[""],"bonusSummary":{"defaultBonusLists":[],"chanceBonusLists":[],"bonusChances":[]},"artifactId":0}'
+    http_version: 
+  recorded_at: Sun, 18 Sep 2016 16:30:12 GMT
+recorded_with: VCR 3.0.3

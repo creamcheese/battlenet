@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://eu.api.battle.net/wow/item/set/1060?apikey=<API_KEY>
+    uri: https://eu.api.battle.net/wow/character/archimonde/sweetlie?apikey=<API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -23,7 +23,9 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Date:
-      - Sun, 18 Sep 2016 16:30:13 GMT
+      - Sun, 18 Sep 2016 16:29:43 GMT
+      Last-Modified:
+      - Sun, 18 Sep 2016 13:12:13 GMT
       Retry-After:
       - '600'
       Server:
@@ -33,7 +35,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Mashery-Responder:
-      - prod-j-worker-us-east-1e-105.mashery.com
+      - prod-j-worker-us-east-1e-114.mashery.com
       X-Plan-Qps-Allotted:
       - '100'
       X-Plan-Qps-Current:
@@ -41,19 +43,16 @@ http_interactions:
       X-Plan-Quota-Allotted:
       - '36000'
       X-Plan-Quota-Current:
-      - '15'
+      - '10'
       X-Plan-Quota-Reset:
       - Sunday, September 18, 2016 5:00:00 PM GMT
       Content-Length:
-      - '236'
+      - '216'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"id":1060,"name":"Deep Earth Vestments","setBonuses":[{"description":"Reduces
-        the mana cost of Healing Touch and Rejuvenation by 5%.","threshold":2},{"description":"Your
-        Rejuvenation and Regrowth spells have a 10% chance to Timeslip and have double
-        the normal duration.","threshold":4}],"items":[76749,76750,76751,76752,76753]}'
+      string: '{"lastModified":1474204333000,"name":"Sweetlie","realm":"Archimonde","battlegroup":"Misery","class":11,"race":8,"gender":1,"level":110,"achievementPoints":16975,"thumbnail":"archimonde/223/134141151-avatar.jpg","calcClass":"U","faction":1,"totalHonorableKills":10238}'
     http_version: 
-  recorded_at: Sun, 18 Sep 2016 16:30:13 GMT
+  recorded_at: Sun, 18 Sep 2016 16:29:49 GMT
 recorded_with: VCR 3.0.3

@@ -1,19 +1,13 @@
 require 'spec_helper'
 
 describe Battlenet::Modules::Data do
-  let(:api) { Battlenet.new }
+  let(:api) { Battlenet.new(:us, ENV['API_KEY']) }
 
-  it "fetches battlegroups data" do
-    VCR.use_cassette('battlegroups') do
-      battlegroups = api.battlegroups
-      battlegroups['battlegroups'][0]['name'].should == 'Bloodlust'
-    end
-  end
 
   it "fetches character races data" do
     VCR.use_cassette('character_races') do
       data = api.character_races
-      data["races"].first["name"].should == "Dwarf"
+      data["races"].first["name"].should == "Human"
     end
   end
 
@@ -27,21 +21,21 @@ describe Battlenet::Modules::Data do
   it "fetches guild rewards data" do
     VCR.use_cassette('guild_rewards') do
       data = api.guild_rewards
-      data["rewards"].first["achievement"]["description"].should == "Craft 500 Epic items with an item level of at least 359."
+      data["rewards"].first["achievement"]["description"].should == "Owner of Dragonwrath, Tarecgosa's Rest."
     end
   end
 
   it "fetches guild perks data" do
     VCR.use_cassette('guild_perks') do
       data = api.guild_perks
-      data["perks"].first["spell"]["name"].should == "Fast Track"
+      data["perks"].first["spell"]["name"].should == "Mount Up"
     end
   end
 
   it "fetches item classes data" do
     VCR.use_cassette('item_classes') do
       data = api.item_classes
-      data["classes"].first["name"].should == "Consumable"
+      data["classes"].first["name"].should == "Battle Pets"
     end
   end
 
@@ -57,7 +51,7 @@ describe Battlenet::Modules::Data do
     VCR.use_cassette('guild_achievements') do
       data = api.guild_achievements
       data["achievements"].first["name"].should == "General"
-      data["achievements"].first["achievements"].first["title"].should == "Guild Level 5"
+      data["achievements"].first["achievements"].first["title"].should == "Everyone Needs a Logo"
     end
   end
 end

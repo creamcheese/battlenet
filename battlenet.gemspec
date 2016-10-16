@@ -19,10 +19,13 @@ Gem::Specification.new do |s|
     s.add_development_dependency "timecop"
     s.add_development_dependency "vcr"
     s.add_development_dependency "webmock"
+    s.add_development_dependency "dotenv"
+    s.add_development_dependency "pry"
   end
 
   if s.respond_to?(:add_runtime_dependency)
     s.add_runtime_dependency "httparty"
+    s.add_runtime_dependency "redis"
   else
     s.add_dependency "httparty"
   end

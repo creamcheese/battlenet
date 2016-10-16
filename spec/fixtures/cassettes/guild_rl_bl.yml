@@ -1,28 +1,58 @@
 ---
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: http://us.battle.net:80/api/wow/guild/nazjatar/RL%20BL
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+http_interactions:
+- request:
+    method: get
+    uri: https://eu.api.battle.net/wow/guild/archimonde/ZeratoR%20TV?apikey=<API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
       code: 200
       message: OK
     headers:
-      date:
-      - Sun, 06 Nov 2011 00:44:00 GMT
-      server:
+      Content-Language:
+      - en-GB
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Sun, 18 Sep 2016 16:30:02 GMT
+      Last-Modified:
+      - Sun, 18 Sep 2016 16:20:03 GMT
+      Retry-After:
+      - '600'
+      Server:
       - Apache
-      x-frame-options:
-      - SAMEORIGIN
-      content-language:
-      - en-US
-      content-length:
-      - '218'
-      vary:
+      Vary:
       - Accept-Encoding
-      content-type:
-      - application/json;charset=utf-8
-    body: ! '{"lastModified":1320538721000,"name":"RL BL","realm":"Nazjatar","level":25,"side":1,"achievementPoints":970,"emblem":{"icon":122,"iconColor":"ffb1b8b1","border":5,"borderColor":"ffffffff","backgroundColor":"ff009061"}}'
-    http_version: '1.1'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1d-122.mashery.com
+      X-Plan-Qps-Allotted:
+      - '100'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '36000'
+      X-Plan-Quota-Current:
+      - '14'
+      X-Plan-Quota-Reset:
+      - Sunday, September 18, 2016 5:00:00 PM GMT
+      Content-Length:
+      - '210'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"lastModified":1474215603000,"name":"ZeratoR TV","realm":"Archimonde","battlegroup":"Misery","level":25,"side":1,"achievementPoints":2595,"emblem":{"icon":67,"iconColor":"ffb1b8b1","iconColorId":14,"border":3,"borderColor":"ffffffff","borderColorId":14,"backgroundColor":"ffff38fa","backgroundColorId":36}}'
+    http_version: 
+  recorded_at: Sun, 18 Sep 2016 16:30:02 GMT
+recorded_with: VCR 3.0.3

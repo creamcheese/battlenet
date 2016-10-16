@@ -1,32 +1,76 @@
 ---
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: http://us.battle.net:80/api/wow/character/nazjatar/mortawa?fields=titles
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+http_interactions:
+- request:
+    method: get
+    uri: https://eu.api.battle.net/wow/character/archimonde/sweetlie?apikey=<API_KEY>&fields=titles
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
       code: 200
       message: OK
     headers:
-      date:
-      - Sun, 06 Nov 2011 00:32:54 GMT
-      server:
+      Content-Language:
+      - en-GB
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Sun, 18 Sep 2016 16:29:49 GMT
+      Last-Modified:
+      - Sun, 18 Sep 2016 13:12:13 GMT
+      Retry-After:
+      - '600'
+      Server:
       - Apache
-      x-frame-options:
-      - SAMEORIGIN
-      last-modified:
-      - Sat, 05 Nov 2011 05:34:29 GMT
-      content-language:
-      - en-US
-      content-length:
-      - '356'
-      vary:
+      Vary:
       - Accept-Encoding
-      content-type:
-      - application/json;charset=utf-8
-    body: ! '{"lastModified":1320471269000,"name":"Mortawa","realm":"Nazjatar","class":6,"race":6,"gender":0,"level":85,"achievementPoints":4630,"thumbnail":"nazjatar/110/44339054-avatar.jpg","titles":[{"id":121,"name":"Twilight
-      Vanquisher %s","selected":true},{"id":140,"name":"%s of the Nightfall"},{"id":143,"name":"%s
-      Jenkins"},{"id":150,"name":"%s of Orgrimmar"}]}'
-    http_version: '1.1'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1e-114.mashery.com
+      X-Plan-Qps-Allotted:
+      - '100'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '36000'
+      X-Plan-Quota-Current:
+      - '11'
+      X-Plan-Quota-Reset:
+      - Sunday, September 18, 2016 5:00:00 PM GMT
+      Content-Length:
+      - '755'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"lastModified":1474204333000,"name":"Sweetlie","realm":"Archimonde","battlegroup":"Misery","class":11,"race":8,"gender":1,"level":110,"achievementPoints":16975,"thumbnail":"archimonde/223/134141151-avatar.jpg","calcClass":"U","faction":1,"titles":[{"id":81,"name":"%s
+        the Seeker"},{"id":76,"name":"Flame Keeper %s"},{"id":78,"name":"%s the Explorer"},{"id":121,"name":"Twilight
+        Vanquisher %s"},{"id":127,"name":"%s of the Horde"},{"id":129,"name":"%s,
+        Champion of the Frozen Wastes"},{"id":130,"name":"Ambassador %s"},{"id":134,"name":"Merrymaker
+        %s"},{"id":135,"name":"%s the Love Fool"},{"id":140,"name":"%s of the Nightfall"},{"id":142,"name":"%s
+        the Undying"},{"id":143,"name":"%s Jenkins"},{"id":150,"name":"%s of Orgrimmar"},{"id":151,"name":"%s
+        of Sen''jin"},{"id":152,"name":"%s of Silvermoon"},{"id":153,"name":"%s of
+        Thunder Bluff"},{"id":154,"name":"%s of the Undercity"},{"id":156,"name":"Crusader
+        %s"},{"id":164,"name":"Starcaller %s"},{"id":165,"name":"%s the Astral Walker"},{"id":172,"name":"%s
+        the Patient"},{"id":173,"name":"%s the Light of Dawn"},{"id":174,"name":"%s,
+        Bane of the Fallen King"},{"id":175,"name":"%s the Kingslayer"},{"id":176,"name":"%s
+        of the Ashen Verdict"},{"id":189,"name":"Assistant Professor %s"},{"id":190,"name":"Associate
+        Professor %s"},{"id":226,"name":"%s of the Four Winds"},{"id":227,"name":"%s,
+        Defender of a Shattered World"},{"id":228,"name":"Dragonslayer %s"},{"id":229,"name":"%s,
+        Blackwing''s Bane"},{"id":267,"name":"%s, Avenger of Hyjal"},{"id":278,"name":"Firelord
+        %s"},{"id":285,"name":"%s, Savior of Azeroth"},{"id":287,"name":"%s, Destroyer''s
+        End"},{"id":383,"name":"%s, Liberator of Orgrimmar"},{"id":384,"name":"%s,
+        Hellscream''s Downfall"},{"id":342,"name":"%s, Storm''s End"},{"id":470,"name":"Archdruid
+        %s","selected":true}],"totalHonorableKills":10238}'
+    http_version: 
+  recorded_at: Sun, 18 Sep 2016 16:29:51 GMT
+recorded_with: VCR 3.0.3

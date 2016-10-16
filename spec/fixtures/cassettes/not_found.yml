@@ -1,26 +1,54 @@
 ---
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: http://us.battle.net:80/api/wow/item/1234567890
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+http_interactions:
+- request:
+    method: get
+    uri: https://us.api.battle.net/wow/item/1234567890?apikey=<API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
       code: 404
       message: Not Found
     headers:
-      date:
-      - Mon, 30 Jan 2012 18:44:15 GMT
-      server:
-      - Apache
-      x-frame-options:
-      - SAMEORIGIN
-      content-length:
-      - '61'
-      vary:
-      - Accept-Encoding
-      content-type:
+      Content-Type:
       - application/json;charset=utf-8
-    body: ! '{"status":"nok", "reason": "unable to get item information."}'
-    http_version: '1.1'
+      Date:
+      - Sun, 18 Sep 2016 16:30:01 GMT
+      Retry-After:
+      - '600'
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1e-114.mashery.com
+      X-Plan-Qps-Allotted:
+      - '100'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '36000'
+      X-Plan-Quota-Current:
+      - '14'
+      X-Plan-Quota-Reset:
+      - Sunday, September 18, 2016 5:00:00 PM GMT
+      Content-Length:
+      - '80'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"nok", "reason": "Unable to get item information."}'
+    http_version: 
+  recorded_at: Sun, 18 Sep 2016 16:30:01 GMT
+recorded_with: VCR 3.0.3

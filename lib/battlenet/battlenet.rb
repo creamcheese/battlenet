@@ -1,4 +1,5 @@
 require 'httparty'
+require 'redis'
 require 'battlenet/exceptions/api_exception'
 require 'battlenet/modules/character'
 require 'battlenet/modules/guild'
@@ -45,7 +46,7 @@ class Battlenet
   # `Battlenet::Modules` is a namespace for modules that define methods that
   # retrieve data from the Community Platform API. Methods for retrieving information
   # about related resources are grouped in the same sub-Module. See documentation for
-  # the individual Modules for more information about the methods contained within.
+  # the individual Modules for more grmation about the methods contained within.
   module Modules; end
 
   include HTTParty
@@ -83,7 +84,7 @@ class Battlenet
   #
   # @param region [Symbol] the region to perform API calls against.
   # @param apikey [String] API key used to authenticate the request.
-  def initialize(region = :us, apikey = nil)
+  def initialize(region = :us, apikey = nil, redis: nil, ttl: 900)
     @apikey = apikey
     @proto = "https://"
     @endpoint = '/wow'
@@ -106,7 +107,15 @@ class Battlenet
 
     @base_uri = "#{@proto}#{@domain}#{@endpoint}"
     self.class.base_uri @base_uri
+
+    @ttl = ttl
+    @cached = false
+    if(redis)
+      @cached = true
+      @redis = Redis.new url: redis
+    end
   end
+
 
   # Performs an HTTP GET request. Uses API key if set.
   #
@@ -126,6 +135,14 @@ class Battlenet
     # @return [String] the full URI for the path
     def fullpath(path)
       "#{@endpoint}#{path}"
+    end
+
+    def filter_api_key(params)
+      params.dup.tap { |x| x.delete("apikey") }
+    end
+
+    def redis_key(path, params)
+      @base_uri + path + filter_api_key(params).to_a.map { |v| v.join("=") }.join('&')
     end
 
     # Performs an HTTP request. Uses API key if set.
@@ -154,13 +171,22 @@ class Battlenet
         options[:query].merge!({ :locale => Battlenet.locale })
       end
 
+      if @cached && result = @redis.get(redis_key(path, params))
+        return JSON.parse(result)
+      end
+
       response = self.class.send(verb, path, options)
-      process_response response
+      process_response response, path, params
     end
 
-    def process_response(response)
+    def process_response(response, path, params)
       if response.code.to_s =~ /^(4|5)/ && Battlenet.fail_silently == false
-        raise Battlenet::ApiException.new(response)
+        raise Battlenet::ApiException.new(response, path, filter_api_key(params))
+      end
+
+      if @cached
+        @redis.set redis_key(path, params), response.to_json
+        @redis.expire redis_key(path, params), @ttl
       end
       response
     end
